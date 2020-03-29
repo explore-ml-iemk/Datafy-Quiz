@@ -1,6 +1,6 @@
 html,
 body {
-  height: 100%;
+  height: 100vh;
   -webkit-font-smoothing: antialiased;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -213,7 +213,8 @@ footer {
 }
 
 .quiz_section img {
-  width: 350px;
+  width: 100%;
+  max-width: 350px;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
