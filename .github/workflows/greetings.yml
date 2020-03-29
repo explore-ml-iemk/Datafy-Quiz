@@ -1,0 +1,14 @@
+name: Greetings
+# https://github.com/marketplace/actions/first-interaction
+
+on: [issues]  # pull_request
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/first-interaction@v1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        issue-message: 'Jai Hind Doston! , ek number first issue banarela re tu!'
+        pr-message: 'Kya bolte public! Apun ko time de thoda dekh ke batata hai!'
