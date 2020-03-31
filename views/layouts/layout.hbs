@@ -11,32 +11,17 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <link rel="stylesheet" href="./css/master.css" />
+    <link rel="stylesheet" href="/css/master.css" />
     <title>Datafy Quiz</title>
   </head>
   <body>
-    <header></header>
-    <section class="welcome_section">
-      <h1 class="display-3">Welcome to Datafy Quiz</h1>
-      <div class="typewriter">
-        <h3>Presented by IEM Explore ML Team</h3>
-      </div>
-      <a href="./topics.html" class="btn btn-success">
-        Take Quiz <i class="fa fa-chevron-right" aria-hidden="true"></i>
-        <i class="fa fa-chevron-right" aria-hidden="true"></i>
-        <i class="fa fa-chevron-right" aria-hidden="true"></i>
-        <i class="fa fa-chevron-right" aria-hidden="true"></i>
-      </a>
-    </section>
-    <footer class="footer mt-auto py-3 bg-dark">
-      <div class="container">
-        <div class="text-muted">
-          Developed by
-          <a href="https://github.com/shivishbrahma">Purbayan Chowdhury</a> with
-          ❤
-        </div>
-      </div>
-    </footer>
+
+    {{> header }}
+    
+    {{{ body }}}
+
+    {{> footer }}
+    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script

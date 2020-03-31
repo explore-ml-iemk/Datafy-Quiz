@@ -1,7 +1,8 @@
 const express = require('express');
 const path = require('path');
-const app = express();
 const handlebars = require('express-handlebars');
+
+const app = express();
 
 const home = require('./routes/index');
 const quiz = require('./routes/quiz');
@@ -15,12 +16,17 @@ app.set('view engine', 'hbs');
 
 
 app.engine('hbs', handlebars({
-layoutsDir:path.join(__dirname, 'views', 'layouts'),
+layoutsDir:path.join(__dirname, '/views', '/layouts'),
+partialsDir: path.join(__dirname, '/views', '/partials'),
 extname: 'hbs',
-defaultLayout: 'index',
+defaultLayout: 'layout',
 }));
 
-// app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
+
+app.get('/', (req, res) => {
+    res.render('index');
+});
 
 app.use('/', home);
 app.use('/', quiz);
