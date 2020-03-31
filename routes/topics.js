@@ -1,19 +1,19 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/topics', (req, res) => {
+router.get('/', (req, res) => {
   res.render('./index/topics');
 });
 
-router.get('/topics/add', (req, res) => {
+router.get('/add', (req, res) => {
   res.render('./index/topics');
 });
 
-router.get('/topics/edit', (req, res) => {
+router.get('/edit', (req, res) => {
   res.render('./index/topics');
 });
 
-router.get('/topics/delete', (req, res) => {
+router.get('/delete', (req, res) => {
   res.render('./index/topics');
 });
 
