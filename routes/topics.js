@@ -1,90 +1,61 @@
 const express = require('express');
 const router = express.Router();
+const mongoose = require('mongoose');
+const Topic = mongoose.model('topics');
 
-//let dbase = db.db("topics");
+// router.get('/', (req, res) => {
+//   res.render('index/topics');
+// });
 
+// Topics Index
 router.get('/', (req, res) => {
-    res.render('./index/topics');
+  Topic.find().then((topics) => {
+    res.render('topics/index', { topics: topics });
+  });
 });
-  
-//Add-Topics Route
-//Render 
 
-router.get('/add', function(req, res){
-    //render to views/topics/add.hbs
-    res.render('./topics/add', {
-        title: ''
-    })
-})
-
-//Post action Add Topic
-
-router.post('/add', (req, res) => {
-
-    var topic = {
-        title: req.body.title
-    }
-    
-    dbase.collection('question').insert(topic, function(err, result){
-        if(err)
-            console.log(err);
-        res.send('Topic Added Successfully');
-    });
-  res.render('./index/topics');
-
+// Add Topics Form
+router.get('/add', function (req, res) {
+  res.render('topics/add');
 });
 
 //Show Edit Topic
-
 router.get('/edit/(:id)', (req, res) => {
-    var o_id = req.params.id;
-    req.dbase.collection("topics").find({"_id": o_id}).toArray(function(err, result){
-        if(err)
-            return console.log(err);
-        if(!result)
-            res.redirect('./index/topics')
-        else{
-            //render to views/topics/edit.hbs
-            res.render('./topics/edit', {
-                title: result[0].title
-            })
-        }
-    })
-})
+  Topic.findOne({ _id: req.params.id }).then((topic) => {
+    res.render('topics/edit', { topic: topic });
+  });
+});
+
+//Post action Add Topic
+router.post('/', (req, res) => {
+  const newTopic = {
+    title: req.body.title,
+    description: req.body.description,
+  };
+
+  new Topic(newTopic).save().then(() => {
+    res.redirect('/topics');
+  });
+});
 
 //Edit Topic Post Action
+router.put('/:id', (req, res) => {
+  Topic.findOne({ _id: req.params.id }).then((topic) => {
+    // New Values
+    topic.title = req.body.title;
+    topic.description = req.body.description;
 
-router.put('/edit/:id', (req, res) => {
-
-    let id = {
-        _id: ObjectID(req.params.id)
-    };
-
-    dbase.collection("topics").update({_id: id}, {$set:{
-        'title': req.body.title
-    }}, (err, result) => {
-        if(err)
-            throw err;
-        res.send('Topic Updated Successfully');
+    topic.save().then((topic) => {
+      res.redirect('/topics');
     });
-    
-  res.render('./index/topics');
-
+  });
 });
 
 //Delete Topic
-
-router.delete('/delete/:id', (req, res) => {
-
-    let id = ObjectID(req.params.id);
-    dbase.collection('topics').deleteOne(id, (err, result) => {
-        if(err)
-            throw err;
-        res.send('Topic Deleted Successfully');
-    });
-
-  res.render('./index/topics');
-
+router.delete('/:id', (req, res) => {
+  Topic.deleteOne({ _id: req.params.id }).then(() => {
+    res.redirect('/topics');
+  });
 });
 
 module.exports = router;
