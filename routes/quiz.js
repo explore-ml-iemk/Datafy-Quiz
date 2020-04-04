@@ -4,9 +4,17 @@ const router = express.Router();
 //let dbase = db.db("question");
 
 router.get('/', (req, res) => {
-  res.render('./index/quiz');
+  res.render('quiz/show');
 });
 
+
+router.get('/show', (req, res) => {
+  res.render("quiz/show");
+});
+
+router.get('/add', function (req, res) {
+  res.render('quiz/add');
+});
 // //Add Question Route
 // //Render
 

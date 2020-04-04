@@ -1,0 +1,54 @@
+<section class="container topics_container">
+    <div class="d-flex flex-row heading-row">
+        <div class="mr-auto">
+            <h2 class="heading">Quiz :</h2>
+        </div>
+        <div>
+            <a class="btn btn-info btn-add" href="/quiz/add">
+                <span class="ion-icon">
+                    <ion-icon name="add-outline"></ion-icon>
+                </span> Add New Question
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+        {{#each topics}}
+        <div class="col-md-6">
+            <div class="card card-item">
+                <div class="card-body">
+                    <h5 class="card-title">{{this.title}}</h5>
+                    <p class="card-text">{{description}}</p>
+                    <div class="d-flex flex-row">
+                        <div class="mr-auto">
+                            <a class='btn btn-info btn-quiz' href="/views/quiz/index">Take quiz <span class='ion-icon'>
+                                    <ion-icon name="play-outline" span></ion-icon>
+                                </span></a>
+                        </div>
+                        <div>
+                            <a class='btn btn-info btn-edit' href="/topics/edit/{{id}}">
+                                <ion-icon name="create-outline"></ion-icon>
+                            </a>
+                        </div>
+                        <div>
+                            <form action="/topics/{{id}}?_method=DELETE" method="post">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class='btn btn-danger btn-delete'>
+                                    <ion-icon name="trash-bin-outline"></ion-icon>
+                                </button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{else}}
+        <div class="card text-left w-100">
+            <div class="card-body">
+                <p class="card-text">No quiz found</p>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</section>
