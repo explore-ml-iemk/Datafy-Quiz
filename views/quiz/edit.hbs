@@ -1,0 +1,50 @@
+<section class="container topics_add">
+    <div class="d-flex flex-row heading-row">
+        <div class="mr-auto">
+            <h2 class="heading">Quiz :</h2>
+        </div>
+    </div>
+
+    <form action="/quiz/{{quizes.id}}?_method=PUT" method="post">
+        <input type="text" name="title" placeholder="Question">
+        <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action">
+          <div class="custom-control custom-radio ">
+            <input type="radio" class="custom-control-input" id="answer1" name="answer" required />
+            <label class="custom-control-label" for="answer1">A</label>
+            <input type="text" name="optionA" placeholder={{ optonA }}>
+          </div>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+          <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" id="answer2" name="answer" value="B" required />
+            <label class="custom-control-label" for="answer2">B</label>
+            <input type="text" name="optionB" placeholder={{ optonC }}>
+          </div>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+          <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" id="answer3" name="answer" value="C" required />
+            <label class="custom-control-label" for="answer3">C</label>
+            <input type="text" name="optionC" placeholder={{ optonC }}>
+          </div>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+          <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" id="answer4" name="answer" value="D" required />
+            <label class="custom-control-label" for="answer4">D</label>
+            <input type="text" name="optionD" placeholder={{ optonD }}>
+          </div>
+          
+        </a>
+      </div>
+        <div class="d-flex justify-content-center">
+            <button type="submit" class='btn btn-info btn-add'>
+                <span class="ion-icon">
+                    <ion-icon name="add-circle-outline"></ion-icon>
+                </span> Update
+            </button>
+        </div>
+    </form>
+
+</section>
