@@ -13,25 +13,22 @@
     </div>
 
     <div class="row">
-        {{#each topics}}
+        {{#each quiz}}
         <div class="col-md-6">
             <div class="card card-item">
                 <div class="card-body">
-                    <h5 class="card-title">{{this.title}}</h5>
-                    <p class="card-text">{{description}}</p>
+                    <h5 class="card-title">{{ question }}</h5>
+                    <p class="card-text">{{ Category }}</p>
                     <div class="d-flex flex-row">
-                        <div class="mr-auto">
-                            <a class='btn btn-info btn-quiz' href="/views/quiz/index">Take quiz <span class='ion-icon'>
-                                    <ion-icon name="play-outline" span></ion-icon>
-                                </span></a>
+                        
                         </div>
                         <div>
-                            <a class='btn btn-info btn-edit' href="/topics/edit/{{id}}">
+                            <a class='btn btn-info btn-edit' href="/quiz/edit/{{id}}">
                                 <ion-icon name="create-outline"></ion-icon>
                             </a>
                         </div>
                         <div>
-                            <form action="/topics/{{id}}?_method=DELETE" method="post">
+                            <form action="/quiz/{{id}}?_method=DELETE" method="post">
                                 <input type="hidden" name="_method" value="DELETE">
                                 <button type="submit" class='btn btn-danger btn-delete'>
                                     <ion-icon name="trash-bin-outline"></ion-icon>

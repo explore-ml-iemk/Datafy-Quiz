@@ -6,37 +6,28 @@
     </div>
 
     <form action="/quiz" method="post">
-        <input type="text" name="title" placeholder="Question">
+        <input type="text" name="question" placeholder="Question">
         <div class="list-group">
-        <a href="#" class="list-group-item list-group-item-action">
-          <div class="custom-control custom-radio ">
-            <input type="radio" class="custom-control-input" id="answer1" name="answer" required />
-            <label class="custom-control-label" for="answer1">A</label>
-            <input type="text" name="optionA" placeholder="Enter Option A">
-          </div>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">
-          <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" id="answer2" name="answer" value="B" required />
-            <label class="custom-control-label" for="answer2">B</label>
-            <input type="text" name="optionB" placeholder="Enter Option B">
-          </div>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">
-          <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" id="answer3" name="answer" value="C" required />
-            <label class="custom-control-label" for="answer3">C</label>
-            <input type="text" name="optionC" placeholder="Enter Option C">
-          </div>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">
-          <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" id="answer4" name="answer" value="D" required />
-            <label class="custom-control-label" for="answer4">D</label>
-            <input type="text" name="optionD" placeholder="Enter Option D">
-          </div>
-          
-        </a>
+
+      <textarea name="option" rows="10" placeholder="Option"></textarea>    
+
+      <label for="category"> select Category</label>
+      <select name="category" class="form-control" id="category">
+        <option>Example Category 1</option>
+        <option>Example Category 2</option>
+        <option>Example Category 3</option>
+        <option>Example Category 4</option>
+      </select>
+        
+         <div class="form-group">
+    <label for="answer"> select Answer</label>
+    <select name="answer" class="form-control" id="answer">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+      </select>
+  </div>
       </div>
         <div class="d-flex justify-content-center">
             <button type="submit" class='btn btn-info btn-add'>

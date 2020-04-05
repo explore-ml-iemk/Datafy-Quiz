@@ -3,25 +3,33 @@ const router = express.Router();
 
 //let dbase = db.db("question");
 
-// router.get('/', (req, res) => {
-//   res.render('quiz/index');
-// });
+router.get('/', (req, res) => {
+  res.render('quiz/index');
+});
 
-// router.get('/show', (req, res) => {
-//   res.render('quiz/show');
-// });
-
-
-// router.get('/add', function (req, res) {
-//   res.render('quiz/add');
-// });
+router.get('/show', (req, res) => {
+  res.render('quiz/show');
+});
 
 
-// router.post('/', (req, res) => {
-//   console.log(req.body);
+router.get('/add', function (req, res) {
+  res.render('quiz/add');
+});
 
-//   res.redirect('/quiz/show');
-// })
+
+router.post('/', (req, res) => {
+
+    const newQues = {
+        question: req.body.question,
+        option: req.body.option,
+        category: req.body.category,
+        answer: req.body.answer
+    }
+
+  console.log(newQues);
+
+  res.redirect('/quiz/show');
+})
 // //Add Question Route
 // //Render
 
