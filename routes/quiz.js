@@ -1,134 +1,70 @@
 const express = require('express');
 const router = express.Router();
+const mongoose = require('mongoose');
+const Question = mongoose.model('quizes');
 
-//let dbase = db.db("question");
+// router.get('/', (req, res) => {
+//   res.render('index/quiz');
+// });
 
-router.get('/', (req, res) => {
-  res.render('quiz/index');
+// Question Index
+router.get('/',(req,res) => {
+	Question.find().then((quiz) => {
+		res.render('quiz/index', { title: title }); //{} content depends on index.hbs file
+	});
 });
 
-router.get('/show', (req, res) => {
-  res.render('quiz/show');
+//Add Question Form
+router.get('/add', function(req, res){
+    res.render('quiz/add');
 });
 
-
-router.get('/add', function (req, res) {
-  res.render('quiz/add');
+//Show Edit Question
+router.get('/edit/:id', (req, res) => {
+	Question.findOne({_id: req.params.id }).then((quiz) => {
+		res.render('quiz/edit', { title: title }); 
+	});
 });
 
+//Post action Add Question
 
 router.post('/', (req, res) => {
-
-    const newQues = {
+	const newQuestion = {
         question: req.body.question,
-        option: req.body.option,
         category: req.body.category,
+        option.title: req.body.option.title,
         answer: req.body.answer
     }
 
-  console.log(newQues);
+    new Question(newQuestion).save().then(() => {
+    	res.redirect('/quiz');
+    });
+});
 
-  res.redirect('/quiz/show');
-})
-// //Add Question Route
-// //Render
+//Edit Question Post Action
 
-// router.get('/add', function(req, res){
-//     //render to views/question/add.hbs
-//     res.render('./question/add', {
-//         question: '',
-//         category: '',
-//         option: [{
-//             title: ''
-//         }],
-//         answer: ''
-//     })
-// })
+router.put('/:id', (req, res) => {
+	Question.findOne({ _id: req.params.id }).then((quizes) => {
+		
+		quizes.question = req.body.title;
+		quizes.category = req.body.category;
+		quizes.option.title = req.body.option.title;
+		quizes.answer = req.body.answer;
 
-// //Post action Add Question
-
-// router.post('/add', (req, res) => {
-
-//     var question1 = {
-//         question: req.body.question,
-//         category: req.body.category,
-//         option: [{
-//             title: req.body.title
-//         }],
-//         answer: req.body.answer
-//     }
-
-//     dbase.collection('question').insert(question1, function(err, result){
-//         if(err)
-//             console.log(err);
-//         res.send('Question Added Successfully');
-//     });
-//   res.render('./index/quiz');
-
-// });
-
-// //Show Edit Question
-
-// router.get('/edit/(:id)', (req, res) => {
-//     var o_id = req.params.id;
-//     req.dbase.collection("question").find({"_id": o_id}).toArray(function(err, result){
-//         if(err)
-//             return console.log(err);
-//         if(!result)
-//             res.redirect('./index/quiz')
-//         else{
-//             //render to views/question/edit.hbs
-//             res.render('./question/edit', {
-//                 id: result[0]._id,
-//                 question: result[0].question,
-//                 category: result[0].category,
-//                 option: [{
-//                     title: result[0].title
-//                 }],
-//                 answer: result[0].answer
-//             })
-//         }
-//     })
-// })
-
-// //Edit Question Post Action
-
-// router.put('/edit/:id', (req, res) => {
-
-//     let id = {
-//         _id: ObjectID(req.params.id)
-//     };
-
-//     dbase.collection("question").update({_id: id}, {$set:{
-//         'question': req.body.question,
-//         'category': req.body.category,
-//         'option': [{
-//             'title': req.body.title
-//         }],
-//         'answer': req.body.answer
-//     }}, (err, result) => {
-//         if(err)
-//             throw err;
-//         res.send('Question Updated Successfully');
-//     });
-
-//   res.render('./index/quiz');
-
-// });
+		quizes.save().then((quiz) => {
+			res.redirect('/quiz');
+		});
+	});
+});
 
 // //Delete Question
 
-// router.delete('/delete/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
 
-//     let id = ObjectID(req.params.id);
-//     dbase.collection('question').deleteOne(id, (err, result) => {
-//         if(err)
-//             throw err;
-//         res.send('Question Deleted Successfully');
-//     });
+    Question.deleteOne({ _id: req.params.id }).then(() => {
+    	res.redirect('/quiz');
+    });
 
-//   res.render('./index/quiz');
-
-// });
+});
 
 module.exports = router;
