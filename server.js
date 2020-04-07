@@ -8,7 +8,6 @@ const session = require('express-session');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
-const passportAuth = require('./config/auth-setup');
 
 // Import function exported by newly installed node modules.
 const {
@@ -31,7 +30,6 @@ const home = require('./routes/index');
 const auth = require('./routes/auth');
 const quiz = require('./routes/quiz');
 const topics = require('./routes/topics');
-const auth = require('./routes/users');
 
 // Load Keys
 const keys = require('./config/keys');

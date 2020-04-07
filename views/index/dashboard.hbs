@@ -1,3 +1,14 @@
 <section class="dashboard">
-    <h1 class="display-3">Welcome {{user.firstName}}</h1>
+    <h1>Welcome {{user.firstName}}</h1>
+    <h4 align="center">Status: {{user.status}}</h4>
+    {{#if (equality user.status 'user')}}
+    <div class="">
+        <a class="mx-auto btn btn-info">Take Quiz</a><br>
+    </div>
+    {{else if (equality user.status 'admin')}}
+    <div class="d-flex justify-content-center">
+        <a href="/topics" class="mx-auto btn btn-info">Topics Section</a><br>
+        <a href="/quiz" class="mx-auto btn btn-info">Quiz Section</a>
+    </div>
+    {{/if}}
 </section>

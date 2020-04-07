@@ -1,16 +1,16 @@
 <header>
-  <nav class="navbar navbar-dark bg-primary">
+  <nav class="navbar navbar-dark bg-dark">
     <ul class="nav nav-pills mb-3" id="pills-tab">
       {{#if user}}
       <li class="nav-item">
-        <a class="nav-link active" id="pills-home-tab" href='/'>Home</a>
+        <a class="nav-link active" id="pills-home-tab" href='/dashboard'>Home</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" id="pills-contact-tab" href='/auth/logout'>Logout</a>
       </li>
       {{else}}
       <li class="nav-item">
-        <a class="nav-link" id="pills-profile-tab" href='/auth/login'>Login</a>
+        <a class="nav-link" id="pills-profile-tab" href='/auth/google'>Login</a>
       </li>
       {{/if}}
     </ul>
