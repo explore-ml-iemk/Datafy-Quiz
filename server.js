@@ -5,6 +5,7 @@ const Handlebars = require('handlebars');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+const passportAuth = require('./config/auth-setup');
 
 // Import function exported by newly installed node modules.
 const {
@@ -23,6 +24,7 @@ const { equality, select, add, length } = require('./helpers/hbs');
 const home = require('./routes/index');
 const quiz = require('./routes/quiz');
 const topics = require('./routes/topics');
+const auth = require('./routes/users');
 
 // Load Keys
 const keys = require('./config/keys');
@@ -79,6 +81,7 @@ app.get('/', (req, res) => {
 app.use('/quiz', quiz);
 app.use('/topics', topics);
 app.use('/', home);
+app.use('/auth', auth);
 
 const PORT = process.env.PORT || 5500;
 
