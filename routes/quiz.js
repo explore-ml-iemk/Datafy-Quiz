@@ -3,9 +3,10 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const Question = mongoose.model('quizes');
 const Topic = mongoose.model('topics');
-// router.get('/', (req, res) => {
-//   res.render('index/quiz');
-// });
+
+router.get('/user', (req, res) => {
+  res.render('index/quiz');
+});
 
 // Question Index
 router.get('/', (req, res) => {

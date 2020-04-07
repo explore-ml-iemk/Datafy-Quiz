@@ -3,6 +3,9 @@ const path = require('path');
 const handlebars = require('express-handlebars');
 const Handlebars = require('handlebars');
 const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const passport = require('passport');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 
@@ -16,11 +19,15 @@ require('./models/User');
 require('./models/Quiz');
 require('./models/Topic');
 
+// Passport Config
+require('./config/passport')(passport);
+
 // Handlebars Helpers
 const { equality, select, add, length } = require('./helpers/hbs');
 
 // Load Routes
 const home = require('./routes/index');
+const auth = require('./routes/auth');
 const quiz = require('./routes/quiz');
 const topics = require('./routes/topics');
 
@@ -68,14 +75,30 @@ app.engine(
 );
 app.set('view engine', 'hbs');
 
+app.use(cookieParser());
+app.use(
+  session({
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
 // Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', (req, res) => {
-  res.render('./index/welcome');
+// Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Set global vars
+app.use((req, res, next) => {
+  res.locals.user = req.user || null;
+  next();
 });
 
 // Use Routes
+app.use('/auth', auth);
 app.use('/quiz', quiz);
 app.use('/topics', topics);
 app.use('/', home);

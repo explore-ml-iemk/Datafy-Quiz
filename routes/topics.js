@@ -2,25 +2,30 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const Topic = mongoose.model('topics');
+const {
+  ensureAuthenticated,
+  ensureGuest,
+  ensureAdmin,
+} = require('../helpers/auth');
 
-// router.get('/', (req, res) => {
-//   res.render('index/topics');
-// });
+router.get('/user', (req, res) => {
+  res.render('index/topics');
+});
 
 // Topics Index
-router.get('/', (req, res) => {
+router.get('/', ensureAdmin, (req, res) => {
   Topic.find().then((topic) => {
     res.render('topics/index', { topic: topic });
   });
 });
 
 // Add Topics Form
-router.get('/add', function (req, res) {
+router.get('/add', ensureAdmin, function (req, res) {
   res.render('topics/add');
 });
 
 //Show Edit Topic
-router.get('/edit/(:id)', (req, res) => {
+router.get('/edit/(:id)', ensureAdmin, (req, res) => {
   Topic.findOne({ _id: req.params.id }).then((topic) => {
     res.render('topics/edit', { topic: topic });
   });
