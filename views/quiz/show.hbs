@@ -1,51 +1,30 @@
-<section class="container topics_container">
-    <div class="d-flex flex-row heading-row">
-        <div class="mr-auto">
-            <h2 class="heading">Quiz :</h2>
-        </div>
-        <div>
-            <a class="btn btn-info btn-add" href="/quiz/add">
-                <span class="ion-icon">
-                    <ion-icon name="add-outline"></ion-icon>
-                </span> Add New Question
-            </a>
-        </div>
-    </div>
-
-    <div class="row">
-        {{#each quiz}}
-        <div class="col-md-6">
-            <div class="card card-item">
-                <div class="card-body">
-                    <h5 class="card-title">{{ question }}</h5>
-                    <p class="card-text">{{ Category }}</p>
-                    <div class="d-flex flex-row">
-                        
-                        </div>
-                        <div>
-                            <a class='btn btn-info btn-edit' href="/quiz/edit/{{id}}">
-                                <ion-icon name="create-outline"></ion-icon>
-                            </a>
-                        </div>
-                        <div>
-                            <form action="/quiz/{{id}}?_method=DELETE" method="post">
-                                <input type="hidden" name="_method" value="DELETE">
-                                <button type="submit" class='btn btn-danger btn-delete'>
-                                    <ion-icon name="trash-bin-outline"></ion-icon>
-                                </button>
-                            </form>
-
-                        </div>
+<section class="quiz_section container-fluid">
+    <form action="">
+        <div class="card text-left">
+            <div class="card-header">
+                <h4 class="card-title">
+                    {{{quiz.question}}}
+                </h4>
+            </div>
+            <div class="m-2">
+            </div>
+            <div class="list-group">
+                {{#each quiz.option}}
+                <a href="#" class="list-group-item list-group-item-action">
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="answer{{add @index 1}}" name="answer"
+                            required />
+                        <label class="custom-control-label" for="answer{{add @index 1}}">{{{this.title}}}</label>
                     </div>
+                </a>
+                {{/each}}
+            </div>
+            <div class="card-body">
+                <div class="btn-section text-center">
+                    <div class="btn btn-warning d-inline">Prev</div>
+                    <div class="btn btn-info d-inline">Next</div>
                 </div>
             </div>
         </div>
-        {{else}}
-        <div class="card text-left w-100">
-            <div class="card-body">
-                <p class="card-text">No quiz found</p>
-            </div>
-        </div>
-        {{/each}}
-    </div>
+    </form>
 </section>

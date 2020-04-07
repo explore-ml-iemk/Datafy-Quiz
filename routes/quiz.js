@@ -2,69 +2,89 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const Question = mongoose.model('quizes');
-
+const Topic = mongoose.model('topics');
 // router.get('/', (req, res) => {
 //   res.render('index/quiz');
 // });
 
 // Question Index
-router.get('/',(req,res) => {
-	Question.find().then((quiz) => {
-		res.render('quiz/index', { title: title }); //{} content depends on index.hbs file
-	});
+router.get('/', (req, res) => {
+  Question.find()
+    .populate('category')
+    .then((quiz) => {
+      res.render('quiz/index', { quiz: quiz }); //{} content depends on index.hbs file
+    });
 });
 
 //Add Question Form
-router.get('/add', function(req, res){
-    res.render('quiz/add');
+router.get('/add', function (req, res) {
+  Topic.find().then((topic) => {
+    res.render('quiz/add', { topic: topic });
+  });
+});
+
+//Show Single Question
+router.get('/show/:id', (req, res) => {
+  Question.findOne({ _id: req.params.id })
+    .populate('category')
+    .then((quiz) => {
+      res.render('quiz/show', { quiz: quiz });
+    });
 });
 
 //Show Edit Question
 router.get('/edit/:id', (req, res) => {
-	Question.findOne({_id: req.params.id }).then((quiz) => {
-		res.render('quiz/edit', { title: title }); 
-	});
+  Question.findOne({ _id: req.params.id })
+    .populate('category')
+    .then((quiz) => {
+      Topic.find().then((topic) => {
+        res.render('quiz/edit', { quiz: quiz, topic: topic });
+      });
+    });
 });
 
 //Post action Add Question
-
 router.post('/', (req, res) => {
-	const newQuestion = {
-        question: req.body.question,
-        category: req.body.category,
-        option.title: req.body.option.title,
-        answer: req.body.answer
-    }
+  (n = req.body.nopt), (options = []);
+  for (let i = 0; i < n; i++) {
+    options.push({ title: req.body[`option[${i}]`] });
+  }
 
-    new Question(newQuestion).save().then(() => {
-    	res.redirect('/quiz');
-    });
+  const newQuestion = {
+    question: req.body.question,
+    category: req.body.category,
+    option: options,
+    answer: parseInt(req.body.answer),
+  };
+
+  new Question(newQuestion).save().then(() => {
+    res.redirect('/quiz');
+  });
 });
 
 //Edit Question Post Action
-
 router.put('/:id', (req, res) => {
-	Question.findOne({ _id: req.params.id }).then((quizes) => {
-		
-		quizes.question = req.body.title;
-		quizes.category = req.body.category;
-		quizes.option.title = req.body.option.title;
-		quizes.answer = req.body.answer;
+  Question.findOne({ _id: req.params.id }).then((quiz) => {
+    (n = req.body.nopt), (options = []);
+    for (let i = 0; i < n; i++) {
+      options.push({ title: req.body[`option[${i}]`] });
+    }
+    quiz.question = req.body.question;
+    quiz.category = req.body.category;
+    quiz.option = options;
+    quiz.answer = parseInt(req.body.answer);
 
-		quizes.save().then((quiz) => {
-			res.redirect('/quiz');
-		});
-	});
+    quiz.save().then(() => {
+      res.redirect('/quiz');
+    });
+  });
 });
 
-// //Delete Question
-
+//Delete Question
 router.delete('/:id', (req, res) => {
-
-    Question.deleteOne({ _id: req.params.id }).then(() => {
-    	res.redirect('/quiz');
-    });
-
+  Question.deleteOne({ _id: req.params.id }).then(() => {
+    res.redirect('/quiz');
+  });
 });
 
 module.exports = router;

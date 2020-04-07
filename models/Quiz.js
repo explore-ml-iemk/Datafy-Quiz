@@ -5,24 +5,24 @@ const Schema = mongoose.Schema;
 const QuizSchema = new Schema({
   question: {
     type: String,
-    required: true
+    required: true,
   },
   category: {
     type: Schema.Types.ObjectId,
-    ref: 'topics'
+    ref: 'topics',
   },
   option: [
     {
       title: {
         type: String,
-        required: true
-      }
-    }
+        required: true,
+      },
+    },
   ],
   answer: {
     type: Number,
-    required: true
-  }
+    required: true,
+  },
 });
 
 // Create collection and add schema

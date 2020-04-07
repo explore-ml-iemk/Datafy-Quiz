@@ -1,51 +1,54 @@
- <section class="quiz_section container-fluid">
-  <form action="">
-    <div class="card text-left">
-      <div class="card-header text-center">
-        <h4 class="card-title">
-          What is the output of following snippet?
-        </h4>
-      </div>
-      <div class="img-Wrap">
-        <img class="card-img-top"
-          src="https://res.cloudinary.com/css-tricks/image/upload/f_auto,q_auto/v1554737513/woocommerce_kqwhux.png"
-          alt="" />
-        <!-- <img src="" alt="" /> -->
-      </div>
-      <div class="list-group">
-        <a href="#" class="list-group-item list-group-item-action">
-          <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" id="answer1" name="answer" required />
-            <label class="custom-control-label" for="answer1">A</label>
+<section class="container quizes_container">
+  <div class="d-flex flex-row heading-row">
+    <div class="mr-auto">
+      <h2 class="heading">Quiz :</h2>
+    </div>
+    <div>
+      <a class="btn btn-info btn-add" href="/quiz/add">
+        <span class="ion-icon">
+          <ion-icon name="add-outline"></ion-icon>
+        </span> Add New Question
+      </a>
+    </div>
+  </div>
+
+  <div class="row">
+    {{#each quiz}}
+    <div class="col-md-6">
+      <div class="card card-item">
+        <div class="card-body">
+          <h5 class="card-title">{{{ question }}}</h5>
+          <p class="card-text">{{ category.title }}</p>
+          <div class="d-flex flex-row">
+            <div class="mr-auto">
+              <a class='btn btn-info btn-quiz' href="quiz/show/{{this.id}}">View <span class='ion-icon'>
+                  <ion-icon name="eye-outline"></ion-icon>
+                </span></a>
+            </div>
+            <div>
+              <a class='btn btn-info btn-edit' href="/quiz/edit/{{id}}">
+                <ion-icon name="create-outline"></ion-icon>
+              </a>
+            </div>
+            <div>
+              <form action="/quiz/{{id}}?_method=DELETE" method="post">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit" class='btn btn-danger btn-delete'>
+                  <ion-icon name="trash-bin-outline"></ion-icon>
+                </button>
+              </form>
+
+            </div>
           </div>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">
-          <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" id="answer2" name="answer" value="B" required />
-            <label class="custom-control-label" for="answer2">B</label>
-          </div>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">
-          <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" id="answer3" name="answer" value="C" required />
-            <label class="custom-control-label" for="answer3">C</label>
-          </div>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">
-          <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" id="answer4" name="answer" value="D" required />
-            <label class="custom-control-label" for="answer4">D</label>
-          </div>
-          
-        </a>
-      </div>
-      <div class="card-body">
-        <div class="btn-section text-center">
-          <div class="btn btn-warning d-inline">Prev</div>
-          <div class="btn btn-info d-inline">Next</div>
         </div>
       </div>
     </div>
-  </form>
-</section> 
-
+    {{else}}
+    <div class="card text-left w-100">
+      <div class="card-body">
+        <p class="card-text">No quiz found</p>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</section>

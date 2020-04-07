@@ -16,6 +16,9 @@ require('./models/User');
 require('./models/Quiz');
 require('./models/Topic');
 
+// Handlebars Helpers
+const { equality, select, add, length } = require('./helpers/hbs');
+
 // Load Routes
 const home = require('./routes/index');
 const quiz = require('./routes/quiz');
@@ -50,6 +53,12 @@ app.set('views', path.join(__dirname, '/views'));
 app.engine(
   'hbs',
   handlebars({
+    helpers: {
+      equality: equality,
+      select: select,
+      add: add,
+      length: length,
+    },
     layoutsDir: path.join(__dirname, '/views', '/layouts'),
     partialsDir: path.join(__dirname, '/views', '/partials'),
     extname: 'hbs',
@@ -73,4 +82,6 @@ app.use('/', home);
 
 const PORT = process.env.PORT || 5500;
 
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+app.listen(PORT, () =>
+  console.log(`Server started on port ${PORT}\nhttp://localhost:${PORT}`)
+);

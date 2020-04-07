@@ -1,34 +1,50 @@
 <section class="container topics_add">
     <div class="d-flex flex-row heading-row">
         <div class="mr-auto">
-            <h2 class="heading">Quiz :</h2>
+            <h2 class="heading">Quiz Add :</h2>
         </div>
     </div>
 
     <form action="/quiz" method="post">
-        <input type="text" name="question" placeholder="Question">
-        <div class="list-group">
+        <textarea class="summernote" name="question" rows="5" placeholder="Question"></textarea>
 
-      <textarea name="option" rows="10" placeholder="Option"></textarea>    
+        <div class="form-row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="category"> Select Category</label>
+                    <select name="category" class="form-control custom-select">
+                        {{#each topic}}
+                        <option value="{{this.id}}">{{this.title}}</option>
 
-      <label for="category"> select Category</label>
-      <select name="category" class="form-control" id="category">
-        <option>Example Category 1</option>
-        <option>Example Category 2</option>
-        <option>Example Category 3</option>
-        <option>Example Category 4</option>
-      </select>
-        
-         <div class="form-group">
-    <label for="answer"> select Answer</label>
-    <select name="answer" class="form-control" id="answer">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-      </select>
-  </div>
-      </div>
+                        {{/each}}
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="nopt"> No of Options</label>
+                    <select name="nopt" class="form-control custom-select" id="nopt">
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div id="option-list">
+            <textarea class="summernote" name="option[0]" rows="5" placeholder="Option1"></textarea>
+            <textarea class="summernote" name="option[1]" rows="5" placeholder="Option2"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="answer"> Select Answer</label>
+            <select name="answer" class="form-control custom-select" id="answer">
+                <option value="1">1</option>
+                <option value="2">2</option>
+            </select>
+        </div>
+
         <div class="d-flex justify-content-center">
             <button type="submit" class='btn btn-info btn-add'>
                 <span class="ion-icon">
@@ -37,5 +53,4 @@
             </button>
         </div>
     </form>
-
 </section>

@@ -9,8 +9,8 @@ const Topic = mongoose.model('topics');
 
 // Topics Index
 router.get('/', (req, res) => {
-  Topic.find().then((topics) => {
-    res.render('topics/index', { topics: topics });
+  Topic.find().then((topic) => {
+    res.render('topics/index', { topic: topic });
   });
 });
 
@@ -45,7 +45,7 @@ router.put('/:id', (req, res) => {
     topic.title = req.body.title;
     topic.description = req.body.description;
 
-    topic.save().then((topic) => {
+    topic.save().then(() => {
       res.redirect('/topics');
     });
   });
