@@ -1,0 +1,21 @@
+<h1>User Section</h1>
+
+<div class="list-group list-group-flush">
+    {{#each user }}
+    <div class="card ">
+  <div class="card-body">
+     <span>{{ user.firstName }}  {{ user.lastName }}</span> 
+     <span>{{ user.status }}</span>
+  </div>
+</div>
+
+{{else}}
+<div class="card text-left w-100">
+            <div class="card-body">
+                <p class="card-text">No Users</p>
+            </div>
+        </div>
+
+    {{/each}}
+    
+</div>

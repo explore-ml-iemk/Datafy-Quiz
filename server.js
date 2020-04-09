@@ -30,6 +30,7 @@ const home = require('./routes/index');
 const auth = require('./routes/auth');
 const quiz = require('./routes/quiz');
 const topics = require('./routes/topics');
+const user = require('./routes/user');
 
 // Load Keys
 const keys = require('./config/keys');
@@ -102,7 +103,7 @@ app.use('/auth', auth);
 app.use('/quiz', quiz);
 app.use('/topics', topics);
 app.use('/', home);
-app.use('/auth', auth);
+app.use('/user', user);
 
 const PORT = process.env.PORT || 5500;
 
