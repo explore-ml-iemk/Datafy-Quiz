@@ -13,7 +13,6 @@ module.exports = {
     }
   },
   ensureAdmin: function (req, res, next) {
-    console.log(req);
     if (req.isAuthenticated()) {
       if (req.user.status.includes('admin')) {
         return next();
@@ -22,7 +21,6 @@ module.exports = {
     res.redirect('/');
   },
   ensureSuperAdmin: function (req, res, next) {
-    console.log(req);
     if (req.isAuthenticated()) {
       if (req.user.status == 'superadmin') {
         return next();

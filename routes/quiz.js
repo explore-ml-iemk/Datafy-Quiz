@@ -3,6 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const Question = mongoose.model('quizes');
 const Topic = mongoose.model('topics');
+const { ensureAdmin } = require('../helpers/auth');
 
 router.get('/user', (req, res) => {
   res.render('index/quiz');
@@ -13,7 +14,7 @@ router.get('/', (req, res) => {
   Question.find()
     .populate('category')
     .then((quiz) => {
-      res.render('quiz/index', { quiz: quiz }); //{} content depends on index.hbs file
+      res.render('quiz/index', { quiz: quiz });
     });
 });
 
@@ -34,7 +35,7 @@ router.get('/show/:id', (req, res) => {
 });
 
 //Show Edit Question
-router.get('/edit/:id', (req, res) => {
+router.get('/edit/:id', ensureAdmin, (req, res) => {
   Question.findOne({ _id: req.params.id })
     .populate('category')
     .then((quiz) => {
@@ -45,7 +46,7 @@ router.get('/edit/:id', (req, res) => {
 });
 
 //Post action Add Question
-router.post('/', (req, res) => {
+router.post('/', ensureAdmin, (req, res) => {
   (n = req.body.nopt), (options = []);
   for (let i = 0; i < n; i++) {
     options.push({ title: req.body[`option[${i}]`] });
@@ -64,7 +65,7 @@ router.post('/', (req, res) => {
 });
 
 //Edit Question Post Action
-router.put('/:id', (req, res) => {
+router.put('/:id', ensureAdmin, (req, res) => {
   Question.findOne({ _id: req.params.id }).then((quiz) => {
     (n = req.body.nopt), (options = []);
     for (let i = 0; i < n; i++) {
@@ -82,7 +83,7 @@ router.put('/:id', (req, res) => {
 });
 
 //Delete Question
-router.delete('/:id', (req, res) => {
+router.delete('/:id', ensureAdmin, (req, res) => {
   Question.deleteOne({ _id: req.params.id }).then(() => {
     res.redirect('/quiz');
   });

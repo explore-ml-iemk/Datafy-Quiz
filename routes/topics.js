@@ -2,13 +2,9 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const Topic = mongoose.model('topics');
-const {
-  ensureAuthenticated,
-  ensureGuest,
-  ensureAdmin,
-} = require('../helpers/auth');
+const { ensureAdmin } = require('../helpers/auth');
 
-router.get('/user', (req, res) => {
+router.get('/user', ensureAdmin, (req, res) => {
   res.render('index/topics');
 });
 
@@ -32,7 +28,7 @@ router.get('/edit/(:id)', ensureAdmin, (req, res) => {
 });
 
 //Post action Add Topic
-router.post('/', (req, res) => {
+router.post('/', ensureAdmin, (req, res) => {
   const newTopic = {
     title: req.body.title,
     description: req.body.description,
@@ -44,7 +40,7 @@ router.post('/', (req, res) => {
 });
 
 //Edit Topic Post Action
-router.put('/:id', (req, res) => {
+router.put('/:id', ensureAdmin, (req, res) => {
   Topic.findOne({ _id: req.params.id }).then((topic) => {
     // New Values
     topic.title = req.body.title;
@@ -57,7 +53,7 @@ router.put('/:id', (req, res) => {
 });
 
 //Delete Topic
-router.delete('/:id', (req, res) => {
+router.delete('/:id', ensureAdmin, (req, res) => {
   Topic.deleteOne({ _id: req.params.id }).then(() => {
     res.redirect('/topics');
   });
