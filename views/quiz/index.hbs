@@ -1,0 +1,54 @@
+<section class="container quizes_container">
+  <div class="d-flex flex-row heading-row">
+    <div class="mr-auto">
+      <h2 class="heading">Quiz :</h2>
+    </div>
+    <div>
+      <a class="btn btn-info btn-add" href="/quiz/add">
+        <span class="ion-icon">
+          <ion-icon name="add-outline"></ion-icon>
+        </span> Add New Question
+      </a>
+    </div>
+  </div>
+
+  <div class="row">
+    {{#each quiz}}
+    <div class="col-md-6">
+      <div class="card card-item">
+        <div class="card-body">
+          <h5 class="card-title">{{{ question }}}</h5>
+          <p class="card-text">{{ category.title }}</p>
+          <div class="d-flex flex-row">
+            <div class="mr-auto">
+              <a class='btn btn-info btn-quiz' href="quiz/show/{{this.id}}">View <span class='ion-icon'>
+                  <ion-icon name="eye-outline"></ion-icon>
+                </span></a>
+            </div>
+            <div>
+              <a class='btn btn-info btn-edit' href="/quiz/edit/{{id}}">
+                <ion-icon name="create-outline"></ion-icon>
+              </a>
+            </div>
+            <div>
+              <form action="/quiz/{{id}}?_method=DELETE" method="post">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit" class='btn btn-danger btn-delete'>
+                  <ion-icon name="trash-bin-outline"></ion-icon>
+                </button>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{else}}
+    <div class="card text-left w-100">
+      <div class="card-body">
+        <p class="card-text">No quiz found</p>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</section>

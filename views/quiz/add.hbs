@@ -1,0 +1,56 @@
+<section class="container topics_add">
+    <div class="d-flex flex-row heading-row">
+        <div class="mr-auto">
+            <h2 class="heading">Quiz Add :</h2>
+        </div>
+    </div>
+
+    <form action="/quiz" method="post">
+        <textarea class="summernote" name="question" rows="5" placeholder="Question"></textarea>
+
+        <div class="form-row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="category"> Select Category</label>
+                    <select name="category" class="form-control custom-select">
+                        {{#each topic}}
+                        <option value="{{this.id}}">{{this.title}}</option>
+
+                        {{/each}}
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="nopt"> No of Options</label>
+                    <select name="nopt" class="form-control custom-select" id="nopt">
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div id="option-list">
+            <textarea class="summernote" name="option[0]" rows="5" placeholder="Option1"></textarea>
+            <textarea class="summernote" name="option[1]" rows="5" placeholder="Option2"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="answer"> Select Answer</label>
+            <select name="answer" class="form-control custom-select" id="answer">
+                <option value="1">1</option>
+                <option value="2">2</option>
+            </select>
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <button type="submit" class='btn btn-info btn-add'>
+                <span class="ion-icon">
+                    <ion-icon name="add-circle-outline"></ion-icon>
+                </span> Add Question
+            </button>
+        </div>
+    </form>
+</section>

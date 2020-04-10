@@ -1,0 +1,19 @@
+<header>
+  <nav class="navbar navbar-dark bg-dark">
+    <ul class="nav nav-pills mb-3" id="pills-tab">
+      {{#if user}}
+      <li class="nav-item">
+        <a class="nav-link" id="pills-home-tab" href='/dashboard'>Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link btn-warning" id="pills-contact-tab" href='/auth/logout'>Logout</a>
+      </li>
+      {{else}}
+      <li class="nav-item">
+        <a class="nav-link btn-info" id="pills-profile-tab" href='/auth/google'>Login</a>
+      </li>
+      {{/if}}
+    </ul>
+
+  </nav>
+</header>

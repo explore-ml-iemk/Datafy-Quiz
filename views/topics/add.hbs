@@ -1,0 +1,20 @@
+<section class="container topics_add">
+    <div class="d-flex flex-row heading-row">
+        <div class="mr-auto">
+            <h2 class="heading">Quiz Topic Add :</h2>
+        </div>
+    </div>
+
+    <form action="/topics" method="post">
+        <input type="text" name="title" placeholder="Topic Name">
+        <textarea name="description" rows="10" placeholder="Topic Description"></textarea>
+        <div class="d-flex justify-content-center">
+            <button type="submit" class='btn btn-info btn-add'>
+                <span class="ion-icon">
+                    <ion-icon name="add-circle-outline"></ion-icon>
+                </span> Add Quiz
+            </button>
+        </div>
+    </form>
+
+</section>

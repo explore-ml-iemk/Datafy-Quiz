@@ -1,0 +1,72 @@
+<section class="container quiz_add">
+    <div class="d-flex flex-row heading-row">
+        <div class="mr-auto">
+            <h2 class="heading">Quiz Update :</h2>
+        </div>
+    </div>
+
+    <form action="/quiz/{{quiz.id}}?_method=PUT" method="post">
+        <textarea class="summernote" name="question" rows="5" placeholder="Question">{{quiz.question}}</textarea>
+
+        <div class="form-row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="category"> Select Category
+                    </label>
+
+                    <select name="category" class="form-control custom-select">
+                        {{#each topic}}
+                        {{#if (equality this.id ../quiz.category.id)}}
+                        <option value="{{this.id}}" selected>{{this.title}}</option>
+                        {{else}}
+                        <option value="{{this.id}}">{{this.title}}</option>
+                        {{/if}}
+                        {{/each}}
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="nopt"> No of Options</label>
+                    <select name="nopt" class="form-control custom-select" id="nopt">
+                        <option value="">Select No of Options</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4" selected>4</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div id="option-list">
+            {{#each quiz.option}}
+            <div class="form-group">
+                <label for="option{{@index}}">Option{{ add @index 1}}</label>
+                <textarea class="summernote" name="option[{{@index}}]" rows="5"
+                    placeholder="Option{{add @index 1}}">{{this.title}}</textarea>
+            </div>
+            {{/each}}
+        </div>
+
+        <div class="form-group">
+            <label for="answer"> Select Answer</label>
+            <select name="answer" class="form-control custom-select" id="answer">
+                {{#each quiz.option}}
+                {{#if (equality (add @index 1) ../quiz.answer)}}
+                <option value="{{add @index 1}}" selected>{{add @index 1}}</option>
+                {{else}}
+                <option value="{{add @index 1}}">{{add @index 1}}</option>
+                {{/if}}
+                {{/each}}
+            </select>
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <button type="submit" class='btn btn-info btn-add'>
+                <span class="ion-icon">
+                    <ion-icon name="pencil-outline"></ion-icon>
+                </span> Update Question
+            </button>
+        </div>
+    </form>
+</section>

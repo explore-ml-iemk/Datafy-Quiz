@@ -1,0 +1,30 @@
+<section class="quiz_section container-fluid">
+    <form action="">
+        <div class="card text-left">
+            <div class="card-header">
+                <h4 class="card-title">
+                    {{{quiz.question}}}
+                </h4>
+            </div>
+            <div class="m-2">
+            </div>
+            <div class="list-group">
+                {{#each quiz.option}}
+                <a href="#" class="list-group-item list-group-item-action">
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="answer{{add @index 1}}" name="answer"
+                            required />
+                        <label class="custom-control-label" for="answer{{add @index 1}}">{{{this.title}}}</label>
+                    </div>
+                </a>
+                {{/each}}
+            </div>
+            <div class="card-body">
+                <div class="btn-section text-center">
+                    <div class="btn btn-warning d-inline">Prev</div>
+                    <div class="btn btn-info d-inline">Next</div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>

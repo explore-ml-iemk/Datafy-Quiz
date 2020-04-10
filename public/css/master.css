@@ -320,5 +320,205 @@ h1 {
     }
 }
 
+<<<<<<< HEAD:public/css/master.css
+body {
+  background-color: #2f326a;
+}
 
+.heading-row {
+  margin: 30px 0;
+}
+
+.heading {
+  color: #fff;
+}
+
+.card-item {
+  max-width: 100%;
+  margin: 10px 0;
+  -webkit-box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+}
+
+.btn-edit {
+  background-color: #fff;
+  font-size: 1.5rem;
+  padding: 5px 10px;
+  color: #207982;
+  border: none;
+  border-bottom: 2px solid #fff;
+  margin-right: 5px;
+  border-radius: 0px;
+}
+
+.btn-edit:hover {
+  background-color: #fff;
+  color: #207982;
+  border-bottom: 2px solid #207982;
+}
+
+.btn-delete {
+  background-color: #fff;
+  font-size: 1.5rem;
+  padding: 5px 10px;
+  color: #ac1513;
+  border: none;
+  border-bottom: 2px solid #fff;
+  border-radius: 0px;
+}
+
+.btn-delete:hover {
+  background-color: #fff;
+  color: #ac1513;
+  border-bottom: 2px solid #ac1513;
+}
+
+.btn-quiz {
+  border-bottom: 3px solid #1abc9c;
+  color: #1abc9c;
+  background-color: #fff;
+  border-radius: 0px;
+}
+
+.btn-quiz:hover {
+  background-color: #16a286;
+}
+
+.card-action {
+  display: inline;
+  margin-left: 10px;
+  padding-left: 30px;
+}
+
+.pill-notification {
+  font-size: 0.8rem;
+  position: relative;
+  margin-left: 10px;
+  bottom: 2px;
+}
+
+.ion-icon {
+  position: relative;
+  top: 3px;
+}
+
+/* Modal */
+.modal-contentbody {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: white;
+  width: 24rem;
+  border-radius: 0.5rem;
+}
+
+.close-button {
+  display: block;
+  color: #fff;
+  /* font-size: 1.5rem; */
+  margin: 0px;
+  float: right;
+  width: 1.5rem;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  background-color: #15162f;
+}
+
+.close-button:hover {
+  background-color: black;
+}
+
+.show-modal {
+  opacity: 1;
+  z-index: 99999;
+  visibility: visible;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: visibility 0s linear 0s, opacity 0.25s 0s, -webkit-transform 0.25s;
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, -webkit-transform 0.25s;
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s, -webkit-transform 0.25s;
+}
+
+/* STRUCTURE */
+h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  /* text-transform: uppercase; */
+  display: inline-block;
+  margin: 40px 8px 40px 8px;
+  color: #ffffff;
+}
+
+/* FORM TYPOGRAPHY*/
+input[type='button'],
+.btn-add,
+input[type='reset'],
+textarea {
+  background-color: #1abc9c;
+  border: none;
+  color: #ffffff;
+  padding: 15px 50px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  /* text-transform: uppercase; */
+  font-size: 1rem;
+  -webkit-box-shadow: 0 10px 30px 0 rgba(22, 162, 134, 0.4);
+  box-shadow: 0 10px 30px 0 rgba(22, 162, 134, 0.4);
+  border-radius: 5px 5px 5px 5px;
+  margin: 30px 0px 40px 0px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+input[type='button']:hover,
+.btn-add,
+input[type='reset']:hover {
+  background-color: #16a085;
+}
+
+input[type='button']:active,
+.btn-add,
+input[type='reset']:active {
+  -webkit-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+input[type='text'],
+textarea {
+  background-color: #1f2147;
+  border: none;
+  color: #ffffff;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  width: 100%;
+  border: 2px solid #1f2147;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  border-radius: 5px 5px 5px 5px;
+}
+
+input[type='text']:focus,
+textarea:focus {
+  background-color: #0a0b18;
+  border-bottom: 2px solid #1abc9c;
+}
+
+input[type='text']:placeholder {
+  color: #cccccc;
+}
+=======
+
+>>>>>>> master:css/master.css
 /*# sourceMappingURL=master.css.map */
