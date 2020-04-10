@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const handlebars = require('express-handlebars');
-const Handlebars = require('handlebars');
+const hbs = require('handlebars');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
@@ -72,7 +72,7 @@ app.engine(
     partialsDir: path.join(__dirname, '/views', '/partials'),
     extname: 'hbs',
     defaultLayout: 'layout',
-    handlebars: allowInsecurePrototypeAccess(Handlebars),
+    handlebars: allowInsecurePrototypeAccess(hbs),
   })
 );
 app.set('view engine', 'hbs');
