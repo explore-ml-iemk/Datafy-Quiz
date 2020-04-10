@@ -5,10 +5,12 @@
     <div class="">
         <a class="mx-auto btn btn-info">Take Quiz</a><br>
     </div>
-    {{else if (equality user.status 'admin')}}
+
+    {{else if (includes user.status 'admin')}}
     <div class="d-flex justify-content-center">
         <a href="/topics" class="mx-auto btn btn-info">Topics Section</a><br>
-        <a href="/quiz" class="mx-auto btn btn-info">Quiz Section</a>
+        <a href="/quiz" class="mx-auto btn btn-info">Quiz Section</a><br>
+        <a href="/user" class="mx-auto btn btn-info">Users Section</a><br>
     </div>
     {{/if}}
 </section>

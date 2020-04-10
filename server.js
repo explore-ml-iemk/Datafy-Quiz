@@ -23,7 +23,7 @@ require('./models/Topic');
 require('./config/passport')(passport);
 
 // Handlebars Helpers
-const { equality, select, add, length } = require('./helpers/hbs');
+const { equality, select, add, length, includes } = require('./helpers/hbs');
 
 // Load Routes
 const home = require('./routes/index');
@@ -66,6 +66,7 @@ app.engine(
       select: select,
       add: add,
       length: length,
+      includes: includes,
     },
     layoutsDir: path.join(__dirname, '/views', '/layouts'),
     partialsDir: path.join(__dirname, '/views', '/partials'),
@@ -102,8 +103,8 @@ app.use((req, res, next) => {
 app.use('/auth', auth);
 app.use('/quiz', quiz);
 app.use('/topics', topics);
-app.use('/', home);
 app.use('/user', user);
+app.use('/', home);
 
 const PORT = process.env.PORT || 5500;
 

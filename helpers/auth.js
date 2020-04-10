@@ -15,7 +15,16 @@ module.exports = {
   ensureAdmin: function (req, res, next) {
     console.log(req);
     if (req.isAuthenticated()) {
-      if (req.user.status == 'admin') {
+      if (req.user.status.includes('admin')) {
+        return next();
+      }
+    }
+    res.redirect('/');
+  },
+  ensureSuperAdmin: function (req, res, next) {
+    console.log(req);
+    if (req.isAuthenticated()) {
+      if (req.user.status == 'superadmin') {
         return next();
       }
     }

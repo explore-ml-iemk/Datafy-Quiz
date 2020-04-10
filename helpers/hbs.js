@@ -22,4 +22,7 @@ module.exports = {
   length: function (a) {
     return toString(a.length);
   },
+  includes: function (a, b) {
+    return a.includes(b);
+  },
 };

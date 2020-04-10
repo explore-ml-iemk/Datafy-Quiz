@@ -1,21 +1,69 @@
-<h1>User Section</h1>
-
-<div class="list-group list-group-flush">
-    {{#each user }}
-    <div class="card ">
-  <div class="card-body">
-     <span>{{ user.firstName }}  {{ user.lastName }}</span> 
-     <span>{{ user.status }}</span>
-  </div>
-</div>
-
-{{else}}
-<div class="card text-left w-100">
-            <div class="card-body">
-                <p class="card-text">No Users</p>
-            </div>
+<section class="container topics_container">
+    <div class="d-flex flex-row heading-row">
+        <div class="mr-auto">
+            <h2 class="heading">User Section :</h2>
         </div>
+    </div>
 
-    {{/each}}
-    
-</div>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#if (equality user.status 'superadmin')}}
+
+            {{#each users}}
+            {{#if (equality status 'superadmin')}}
+            {{else}}
+            <tr>
+                <td scope="row">{{ firstName }} {{ lastName }}</td>
+                <td>{{email}}</td>
+                <td>{{ status }}</td>
+                <td>
+                    <form action="/user/admin/{{id}}?_method=PUT" method="post">
+                        <button type="submit" class="btn btn-primary" style="font-size: 1rem;">Toggle Admin</button>
+                    </form>
+                </td>
+            </tr>
+            {{/if}}
+            {{else}}
+            <div class="card text-left w-100">
+                <div class="card-body">
+                    <p class="card-text">No Users</p>
+                </div>
+            </div>
+            {{/each}}
+            {{/if}}
+
+
+            {{#if (equality user.status 'admin')}}
+            {{#each users}}
+            {{#if (includes status 'admin')}}
+            {{else}}
+            <tr>
+                <td scope="row">{{ firstName }} {{ lastName }}</td>
+                <td>{{email}}</td>
+                <td>{{ status }}</td>
+                <td>
+                    <form action="/user/admin/{{id}}?_method=PUT" method="post">
+                        <button type="submit" class="btn btn-primary" style="font-size: 1rem;">Toggle Admin</button>
+                    </form>
+                </td>
+            </tr>
+            {{/if}}
+            {{else}}
+            <div class="card text-left w-100">
+                <div class="card-body">
+                    <p class="card-text">No Users</p>
+                </div>
+            </div>
+            {{/each}}
+            {{/if}}
+        </tbody>
+    </table>
+</section>
