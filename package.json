@@ -29,10 +29,10 @@
     "moment": "^2.24.0",
     "mongoose": "^5.9.7",
     "passport": "^0.4.1",
-    "passport-google-oauth20": "^2.0.0"
+    "passport-google-oauth20": "^2.0.0",
+    "handlebars": "^4.7.5"
   },
   "devDependencies": {
-    "handlebars": "^4.7.5",
     "nodemon": "^2.0.2"
   }
 }
