@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const Question = mongoose.model('quizes');
 const Topic = mongoose.model('topics');
 const { ensureAdmin } = require('../helpers/auth');
 
@@ -18,6 +19,15 @@ router.get('/', ensureAdmin, (req, res) => {
 // Add Topics Form
 router.get('/add', ensureAdmin, function (req, res) {
   res.render('topics/add');
+});
+
+//Show Topic All Question
+router.get('/show/:id', (req, res) => {
+  Question.find({ category: req.params.id })
+    .populate('category')
+    .then((quiz) => {
+      res.render('quiz/index', { quiz: quiz });
+    });
 });
 
 //Show Edit Topic

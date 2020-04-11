@@ -2,21 +2,21 @@
   "name": "datafy-quiz",
   "version": "1.0.0",
   "description": "A Datascience Quiz",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node server",
-    "test": "nodemon server"
+    "start": "node server.js",
+    "test": "nodemon server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/explore-ml-iemk/Datafy-Quiz.git"
   },
-  "author": "",
+  "author": "Purbayan Chowdhury",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/explore-ml-iemk/Datafy-Quiz/issues"
   },
-  "homepage": "https://github.com/explore-ml-iemk/Datafy-Quiz#readme",
+  "homepage": "https://github.com/explore-ml-iemk/Datafy-Quiz",
   "dependencies": {
     "@handlebars/allow-prototype-access": "^1.0.3",
     "body-parser": "^1.19.0",
