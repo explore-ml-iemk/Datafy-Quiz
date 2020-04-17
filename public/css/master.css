@@ -1,326 +1,327 @@
 html,
 body {
-    background-color: #2f326a;
-    height: 100vh;
-    -webkit-font-smoothing: antialiased;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
+  height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 main {
-    padding: 0;
-    -webkit-box-flex: 1;
-    -ms-flex: 1 0 auto;
-    flex: 1 0 auto;
+  padding: 0;
+  -webkit-box-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
 }
 
 header,
 footer {
-    -ms-flex-negative: 0;
-    flex-shrink: 0;
-    border-radius: 0px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  border-radius: 0px;
 }
 
 footer {
-    text-align: center;
+  width: 100%;
+  text-align: center;
 }
 
 .typewriter h3 {
-    overflow: hidden;
-    /* Ensures the content is not revealed until the animation */
-    border-right: 0.15em solid orange;
-    /* The typwriter cursor */
-    white-space: nowrap;
-    /* Keeps the content on a single line */
-    margin: 0 auto;
-    /* Gives that scrolling effect as the typing happens */
-    letter-spacing: 0.15em;
-    /* Adjust as needed */
-    -webkit-animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
-    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
-    margin-bottom: 1em;
+  overflow: hidden;
+  /* Ensures the content is not revealed until the animation */
+  border-right: 0.15em solid orange;
+  /* The typwriter cursor */
+  white-space: nowrap;
+  /* Keeps the content on a single line */
+  margin: 0 auto;
+  /* Gives that scrolling effect as the typing happens */
+  letter-spacing: 0.15em;
+  /* Adjust as needed */
+  -webkit-animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+          animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  margin-bottom: 1em;
 }
-
 
 /* The typing effect */
-
 @-webkit-keyframes typing {
-    from {
-        width: 0;
-    }
-    to {
-        width: 100%;
-    }
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }
-
 @keyframes typing {
-    from {
-        width: 0;
-    }
-    to {
-        width: 100%;
-    }
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }
-
 
 /* The typewriter cursor effect */
-
 @-webkit-keyframes blink-caret {
-    from,
-    to {
-        border-color: transparent;
-    }
-    50% {
-        border-color: orange;
-    }
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
+  }
 }
-
 @keyframes blink-caret {
-    from,
-    to {
-        border-color: transparent;
-    }
-    50% {
-        border-color: orange;
-    }
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
+  }
 }
 
 .welcome_section {
-    display: block;
-    text-align: center;
-    position: absolute;
-    top: 30%;
-    left: 50%;
+  display: block;
+  text-align: center;
+  position: absolute;
+  top: 30%;
+  left: 50%;
 }
 
 .welcome_section h1,
 .welcome_section .btn,
 .welcome_section .typewriter {
-    display: block;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+  display: block;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 @-webkit-keyframes glazing {
-    0% {
-        color: #fff;
-    }
-    25% {
-        color: #ccc;
-    }
-    50% {
-        color: #999;
-    }
-    75% {
-        color: #ccc;
-    }
-    100% {
-        color: #eee;
-    }
+  0% {
+    color: #fff;
+  }
+  25% {
+    color: #ccc;
+  }
+  50% {
+    color: #999;
+  }
+  75% {
+    color: #ccc;
+  }
+  100% {
+    color: #eee;
+  }
 }
 
 @keyframes glazing {
-    0% {
-        color: #fff;
-    }
-    25% {
-        color: #ccc;
-    }
-    50% {
-        color: #999;
-    }
-    75% {
-        color: #ccc;
-    }
-    100% {
-        color: #eee;
-    }
+  0% {
+    color: #fff;
+  }
+  25% {
+    color: #ccc;
+  }
+  50% {
+    color: #999;
+  }
+  75% {
+    color: #ccc;
+  }
+  100% {
+    color: #eee;
+  }
 }
 
 .topics_section {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    text-align: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    margin-top: 8rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 8rem;
 }
 
 .topics_section h1,
 .topics_section .btn,
 .topics_section .topics-list {
-    display: block;
+  display: block;
 }
 
 .topics_section .topics-list {
-    list-style: none;
-    text-align: left;
-    max-width: 50%;
-    margin-top: 2.5em;
-    margin-bottom: 0;
-    color: #e61e3c;
+  list-style: none;
+  text-align: left;
+  max-width: 50%;
+  margin-top: 2.5em;
+  margin-bottom: 0;
+  color: #e61e3c;
 }
 
 .topics_section .topics-list li::before {
-    content: '\f138';
-    font: normal normal normal 1.5rem/1 FontAwesome;
-    margin-right: 0.5rem;
-    width: 10px;
-    height: 10px;
+  content: '\f138';
+  font: normal normal normal 1.5rem/1 FontAwesome;
+  margin-right: 0.5rem;
+  width: 10px;
+  height: 10px;
 }
 
 .topics_section .topics-list a {
-    font-size: 1.5rem;
-    color: #e61e3c;
+  font-size: 1.5rem;
+  color: #e61e3c;
 }
 
 .topics_section .topics-list li:hover {
-    margin-left: 2.5rem;
+  margin-left: 2.5rem;
 }
 
 .quiz_section {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-flow: column;
-    flex-flow: column;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .quiz_section .img-Wrap {
-    min-height: 10rem;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
+  min-height: 10rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .quiz_section .card {
-    margin-top: 5rem;
+  margin-top: 5rem;
 }
 
 .quiz_section img {
-    width: 100%;
-    max-width: 350px;
-    -ms-flex-item-align: center;
-    -ms-grid-row-align: center;
-    align-self: center;
+  width: 100%;
+  max-width: 350px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 .quiz_section .list-group-item {
-    padding: 0;
+  padding: 0;
 }
 
 .quiz_section .list-group-item .custom-control {
-    padding-left: 0;
+  padding-left: 0;
 }
 
 .quiz_section .list-group-item .custom-control .custom-control-label {
-    cursor: pointer;
-    padding: 0.75rem 1.5rem;
-    width: 100%;
-    height: 100%;
+  cursor: pointer;
+  padding: 0.75rem 1.5rem;
+  width: 100%;
+  height: 100%;
 }
 
-.quiz_section .list-group-item .custom-control .custom-control-label::before,
-.quiz_section .list-group-item .custom-control .custom-control-label::after {
-    opacity: 0;
+.quiz_section .list-group-item .custom-control .custom-control-label::before, .quiz_section .list-group-item .custom-control .custom-control-label::after {
+  opacity: 0;
 }
 
-.quiz_section input[type='radio']:checked+.custom-control-label {
-    width: 100%;
-    background-color: #6610f2 !important;
+.quiz_section input[type='radio']:checked + .custom-control-label {
+  width: 100%;
+  background-color: #6610f2 !important;
 }
 
 h1 {
-    text-align: center;
+  text-align: center;
 }
 
 .btn {
-    display: block;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
-    border-radius: 25px;
-    padding: 0.5em 1em;
-    font-size: large;
+  display: block;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 25px;
+  padding: 0.5em 1em;
+  font-size: large;
 }
 
 .btn i {
-    display: none;
+  display: none;
 }
 
 .btn i:first-child {
-    display: inline;
+  display: inline;
 }
 
-.btn:hover>i {
-    display: inline;
-    -webkit-animation: glazing 0.8s infinite linear;
-    animation: glazing 0.8s infinite linear;
+.btn:hover > i {
+  display: inline;
+  -webkit-animation: glazing 0.8s infinite linear;
+          animation: glazing 0.8s infinite linear;
 }
 
 .card {
-    max-width: 1000px;
-    margin: 0 auto;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .card .btn-section .btn:first-child {
-    float: left;
+  float: left;
 }
 
 .card .btn-section .btn:last-child {
-    float: right;
+  float: right;
+}
+
+.quizes_container .card img {
+  display: block;
+  margin: auto;
+  width: auto !important;
+  height: auto !important;
+  max-height: 150px;
+  max-width: 450px;
 }
 
 @media only screen and (max-width: 767px) {
-    .quiz_section .card {
-        margin-top: 1.2rem;
-    }
-    .display-3 {
-        font-size: xx-large;
-    }
-    .typewriter h3 {
-        font-size: large;
-    }
-    h1 {
-        font-size: xx-large;
-    }
-    .topics_section {
-        margin-top: 4rem;
-    }
-    .topics_section .topics-list {
-        max-width: 100% !important;
-    }
-    .topics_section .topics-list a {
-        font-size: large !important;
-    }
-    h3 {
-        font-size: large;
-    }
+  .quiz_section .card {
+    margin-top: 1.2rem;
+  }
+  .display-3 {
+    font-size: xx-large;
+  }
+  .typewriter h3 {
+    font-size: large;
+  }
+  h1 {
+    font-size: xx-large;
+  }
+  .topics_section {
+    margin-top: 4rem;
+  }
+  .topics_section .topics-list {
+    max-width: 100% !important;
+  }
+  .topics_section .topics-list a {
+    font-size: large !important;
+  }
+  h3 {
+    font-size: large;
+  }
 }
 
-<<<<<<< HEAD:public/css/master.css
 body {
   background-color: #2f326a;
 }
@@ -518,7 +519,4 @@ textarea:focus {
 input[type='text']:placeholder {
   color: #cccccc;
 }
-=======
-
->>>>>>> master:css/master.css
 /*# sourceMappingURL=master.css.map */

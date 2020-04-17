@@ -25,19 +25,23 @@
                     </select>
                 </div>
             </div>
+
             <div class="col">
                 <div class="form-group">
                     <label for="nopt"> No of Options</label>
                     <select name="nopt" class="form-control custom-select" id="nopt">
-                        <option value="">Select No of Options</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4" selected>4</option>
+                        <option value="" disabled>Select No of Options</option>
+                        {{#loop 2 5 1}}
+                        {{#if (equality  this (length ../quiz.option))}}
+                        <option value="{{this}}" selected>{{this}}</option>
+                        {{else}}
+                        <option value="{{this}}">{{this}}</option>
+                        {{/if}}
+                        {{/loop}}
                     </select>
                 </div>
             </div>
         </div>
-
         <div id="option-list">
             {{#each quiz.option}}
             <div class="form-group">

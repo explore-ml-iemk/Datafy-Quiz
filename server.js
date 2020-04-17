@@ -23,7 +23,14 @@ require('./models/Topic');
 require('./config/passport')(passport);
 
 // Handlebars Helpers
-const { equality, select, add, length, includes } = require('./helpers/hbs');
+const {
+  equality,
+  loop,
+  select,
+  add,
+  length,
+  includes,
+} = require('./helpers/hbs');
 
 // Load Routes
 const home = require('./routes/index');
@@ -65,6 +72,7 @@ app.engine(
       equality: equality,
       select: select,
       add: add,
+      loop: loop,
       length: length,
       includes: includes,
     },
