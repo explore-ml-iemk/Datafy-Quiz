@@ -1,49 +1,67 @@
 <section class="quiz_section container-fluid">
-  <form action="">
-    <div class="card text-left">
+
+
+  <form action="/dashboard" class="quizForm">
+    <!-- Modal -->
+    <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Result</h5>
+          </div>
+          <div class="modal-body">
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{#each quiz}}
+
+    <div class="card text-left quiz">
+      <h1 class="tag-round rounded-circle"><span class="badge badge-primary">{{add @index 1}}/5</span></h1>
       <div class="card-header text-center">
         <h4 class="card-title">
-          What is the output of following snippet?
+          {{{question}}}
         </h4>
       </div>
       <div class="img-Wrap">
-        <img class="card-img-top"
-          src="https://res.cloudinary.com/css-tricks/image/upload/f_auto,q_auto/v1554737513/woocommerce_kqwhux.png"
-          alt="" />
-        <!-- <img src="" alt="" /> -->
       </div>
-      <div class="list-group">
-        <a href="#" class="list-group-item list-group-item-action">
-          <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" id="answer1" name="answer" required />
-            <label class="custom-control-label" for="answer1">A</label>
-          </div>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">
-          <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" id="answer2" name="answer" value="B" required />
-            <label class="custom-control-label" for="answer2">B</label>
-          </div>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">
-          <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" id="answer3" name="answer" value="C" required />
-            <label class="custom-control-label" for="answer3">C</label>
-          </div>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">
-          <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" id="answer4" name="answer" value="D" required />
-            <label class="custom-control-label" for="answer4">D</label>
-          </div>
-          
-        </a>
+      <div class="btn-group-vertical btn-group-toggle" data-toggle="buttons">
+        {{#each option}}
+
+        {{#if (equality ../answer (add @index 1))}}
+
+        <label class="btn btn-secondary" for="answer{{add @index 1}}">
+          <input type="radio" class="custom-control-input correct" id="answer{{add @index 1}}"
+            name="answer{{add @../index 1}}" />
+          {{{title}}}
+        </label>
+
+        {{else}}
+
+        <label class="btn btn-secondary" for="answer{{add @index 1}}">
+          <input type="radio" class="custom-control-input" id="answer{{add @index 1}}"
+            name="answer{{add @../index 1}}" />
+          {{{title}}}
+        </label>
+
+        {{/if}}
+
+        {{/each}}
       </div>
-      <div class="card-body">
-        <div class="btn-section text-center">
-          <div class="btn btn-warning d-inline">Prev</div>
-          <div class="btn btn-info d-inline">Next</div>
-        </div>
+    </div>
+    {{/each}}
+    <div class="card-body">
+      <div class="btn-section mb-3">
+        <a id="submit" class="btn btn-primary mx-auto" href="#" role="button" data-toggle="modal"
+          data-target="#exampleModal">Submit</a>
+      </div>
+      <div class="btn-section text-center">
+        <div class="btn btn-warning d-inline" id="prev">Prev</div>
+        <div class="btn btn-info d-inline" id="next">Next</div>
       </div>
     </div>
   </form>
